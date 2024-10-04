@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.interface{
+    text-align: center;
+    width: 50%;
+    /* display: inline-grid;
+    justify-content: center; */
+    /* row-gap: 10px; */
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    align-items: center;
+    margin: auto;
+
+}
+
+.LocationInput{
+    height: 3vh;
+    width: 10vw;
+    margin: 8px;
+}
+
+.flex{
+    margin: 8px;
+display: flex;
+justify-content: center;
+}
+
+#temp{
+    width: 3vw;
+    cursor: pointer;
+}
+
+#button{
+    width: 10vw;
+    cursor: pointer;
+}
+
+.image{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 25vw;
+    right: 25vw;
+    width: 50%;
+    border: solid 3px black;
+    border-radius: 10px;
+    min-height: 200px;
+}
