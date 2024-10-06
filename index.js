@@ -1,43 +1,29 @@
-const apiKey = '98f5bb55869ee5bfe4049963eac127ff';
+const apiKey = 'api';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
-const locat = document.getElementById('loc')
-const description = document.getElementById('Wdesc')
-const temperature = document.getElementById('temper')
-const locationInput = document.getElementById('LocInp')
-const buttons = document.getElementById('button')
-/*const unit = document.getElementById('temp')*/
-const image = document.getElementById('img')
+document.getElementById('fetch-btn').addEventListener('click', fetchWeather);
 
-buttons.addEventListener('click', function () {
+function fetchWeather() {
+    const locationInput = document.getElementById('location');
+    const unitSelect = document.getElementById('unit');
     const location = locationInput.value;
+    const unit = unitSelect.value;
+
     if (location) {
-        fetchWeather(location);
+        const url = `${apiUrl}?q=${location}&appid=${apiKey}&units=${unit}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const locationText = document.getElementById('location-text');
+                const temperatureText = document.getElementById('temperature-text');
+                const descriptionText = document.getElementById('description-text');
+
+                locationText.textContent = `Location: ${data.name}`;
+                temperatureText.textContent = `Temperature: ${Math.round(data.main.temp)} ${unit === 'metric' ? 'C' : 'F'}`;
+                descriptionText.textContent = `Description: ${data.weather[0].description}`;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+            });
     }
-});
-
-
-function fetchWeather(location) {
-
-    function CheckUnit() {
-        const select = getElementById('temp');
-        const selected = select.value;
-        if (selected === 'F') {
-            const url = `${apiUrl}?q=${location}&appid=${apiKey}&units=imperial`;
-        } else if (selected === 'C') {
-            const url = `${apiUrl}?q=${location}&appid=${apiKey}&units=metric`;
-        }
-        return url
-    }
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            locat.textContent = data.name;
-            temperature.textContent = `${Math.round(data.main.temp)}`;
-            description.textContent = data.weather[0].description;
-        })
-        .catch(error => {
-            console.error('Error fetching weather data:', error);
-        });
 }

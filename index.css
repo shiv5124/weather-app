@@ -3,52 +3,80 @@ body {
     background-color: #f0f0f0;
 }
 
-.interface{
-    text-align: center;
-    width: 50%;
-    /* display: inline-grid;
-    justify-content: center; */
-    /* row-gap: 10px; */
-    border: 3px solid black;
+.container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin: auto;
-
+    padding: 20px;
 }
 
-.LocationInput{
-    height: 3vh;
-    width: 10vw;
-    margin: 8px;
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.flex{
-    margin: 8px;
-display: flex;
-justify-content: center;
+.input-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-#temp{
-    width: 3vw;
+.input-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-#button{
-    width: 10vw;
-    cursor: pointer;
+.input-container button:hover {
+    background-color: #3e8e41;
+}
+
+.weather-data {
+    padding: 20px;
+}
+
+.weather-data p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#location-text {
+    font-weight: bold;
+}
+
+#temperature-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#description-text {
+    font-size: 18px;
+    color: #666;
 }
 
 .image{
-    margin-top: 5vh;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    left: 25vw;
-    right: 25vw;
-    width: 50%;
-    border: solid 3px black;
+    max-width: 400px;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    min-height: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
