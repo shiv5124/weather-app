@@ -1,15 +1,16 @@
-const apiKey = '98f5bb55869ee5bfe4049963eac127ff';
+console.log("test")
+const apiKey = 'api';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
-var location = '';
-var unit ='';
+var location = "";
+var unit ="";
 
 function checkLocat(event){
-location = event.target.value;
+location = event.currentTarget.value;
 }
 
 function checkMetric(event){
-unit =event.target.value;
+unit =event.currentTarget.value;
 }
 
 async function fetchWeather() {
@@ -17,7 +18,7 @@ async function fetchWeather() {
     const unitSelect = document.querySelector(".temp-unit")
     const location = locationInput.value;
     const unit = unitSelect.value;*/
-  
+  console.log("this is clicked")
     if (location) {
       const url = `${apiUrl}?q=${location}&appid=${apiKey}&units=${unit}`;
   
