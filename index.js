@@ -1,42 +1,55 @@
-console.log("test")
 const apiKey = 'api';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
-var location = "";
-var unit ="";
+var locationinp = "";
+var unit = "";
 
-function checkLocat(event){
-location = event.currentTarget.value;
+function GetLocation() {
+  locationinp = event.currentTarget.value;
 }
 
-function checkMetric(event){
-unit =event.currentTarget.value;
+function GetMetric() {
+  unit = event.currentTarget.value;
 }
 
-async function fetchWeather() {
-   /* const locationInput = document.querySelector(".locat")
-    const unitSelect = document.querySelector(".temp-unit")
-    const location = locationInput.value;
-    const unit = unitSelect.value;*/
-  console.log("this is clicked")
-    if (location) {
-      const url = `${apiUrl}?q=${location}&appid=${apiKey}&units=${unit}`;
-  
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-  
-        const locationText = document.getElementById('location-text');
-        const temperatureText = document.getElementById('temperature-text');
-        const descriptionText = document.getElementById('description-text');
-  
-        locationText.textContent = `Location: ${data.name}`;
-        temperatureText.textContent = `Temperature: ${Math.round(data.main.temp)} ${unit === 'metric' ? 'C' : 'F'}`;
-        descriptionText.textContent = `Description: ${data.weather[0].description}`;
-      } catch (error) {
-        console.error('Error fetching weather data:', error);
-      }
+function LocationValidation() {
+
+  const specials = /[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]/g
+  const empty = /^$/g
+
+  if (locationinp.match(specials) === true || locationinp.match(empty) === true) {
+    const disableBtn = document.getElementById('fetch-btn')
+    disableBtn.setAttribute('disabled', true)
+    disableBtn.classList.add("disable")
+    const wrongInp = document.getElementById('location')
+    wrongInp.classList.add("disableinp")
+  }
+}
+
+var url = "";
+var ApiData ="";
+
+async function fetchApi() {
+  if (location) {
+    url = `${apiUrl}?q=${locationinp}&appid=${apiKey}&units=${unit}`;
+    console.log(unit)
+    
+    try {
+      const response = await fetch(url);
+      ApiData = await response.json();
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
     }
   }
+}
 
-                                    
+async function WeatherDetails() {
+  await fetchApi();
+  const locationText = document.getElementById('location-text');
+      const temperatureText = document.getElementById('temperature-text');
+      const descriptionText = document.getElementById('description-text');
+    
+      locationText.textContent = `Location: ${ApiData.name}`;
+      temperatureText.textContent = `Temperature: ${Math.round(ApiData.main.temp)} ${unit === 'metric' ? 'C' : 'F'}`;
+      descriptionText.textContent = `Description: ${ApiData.weather[0].description}`;
+}

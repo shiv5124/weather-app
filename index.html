@@ -11,12 +11,12 @@
     <div class="container">
         <h1>Weather App</h1>
         <div class="input-container">
-            <input type="text" id="location" placeholder="Enter location" class="locat" oninput="checkLocat">
-            <select id="unit" class="temp-unit" onchange="checkMetric">
-                <option value="metric">Celsius (C)</option>
+            <input type="text" id="location" placeholder="Enter location" class="locat" oninput="GetLocation();LocationValidation()">
+            <select id="unit" class="temp-unit" onchange="GetMetric()">
+                <option value="metric" selected>Celsius (C)</option>
                 <option value="imperial">Fahrenheit (F)</option>
             </select>
-            <button id="fetch-btn" onclick="fetchWeather">Fetch Weather</button>
+            <button id="fetch-btn" onclick="WeatherDetails()">Fetch Weather</button>
         </div>
         <div class="weather-data">
             <p id="location-text"></p>
