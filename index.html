@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
+
 <body>
     <div class="container">
         <h1>Weather App</h1>
         <div class="input-container">
-            <input type="text" id="location" placeholder="Enter location" class="locat" oninput="GetLocation();LocationValidation()">
-            <select id="unit" class="temp-unit" onchange="GetMetric()">
+            <input type="text" id="location" placeholder="Enter location" class="locat"
+                oninput="setLocation();locationValidation()">
+            <select id="unit" class="temp-unit" onchange="setMetric()">
                 <option value="metric" selected>Celsius (C)</option>
                 <option value="imperial">Fahrenheit (F)</option>
             </select>
-            <button id="fetch-btn" onclick="WeatherDetails()">Fetch Weather</button>
+            <button id="fetch-btn" onclick="fetchWeatherDetails()">Fetch Weather</button>
         </div>
         <div class="weather-data">
             <p id="location-text"></p>
@@ -27,4 +30,5 @@
 
 
 </body>
+
 </html>
