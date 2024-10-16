@@ -14,8 +14,8 @@ A simple web application built with HTML, CSS, and pure JavaScript that provides
 (./images/screenshot.png)
 ![Intial](./screenshots/intial.png)
 ![validation](./screenshots/locationValidation.png)
-![Fetching with C as unit](./screenshots/fetchweather_C.png)
-![Fetching with F as unit](./screenshots/fetchweather_F.png)
+![Fetching with C as unit](./screenshots/weatherfetch_C.png)
+![Fetching with F as unit](./screenshots/weatherfetch_F.png)
 
 **Requirements**
 
