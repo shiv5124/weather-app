@@ -11,11 +11,11 @@ A simple web application built with HTML, CSS, and pure JavaScript that provides
 - Responsive design for mobile and desktop devices
 
 **Screenshots**
-
-!screenshots/intial.png
-!screenshots/locationValidation.png
-!screenshots/fetchweather_C.png
-!screenshots/fetchweather_F.png
+(./images/screenshot.png)
+![Intial](./screenshots/intial.png)
+![validation](./screenshots/locationValidation.png)
+![Fetching with C as unit](./screenshots/fetchweather_C.png)
+![Fetching with F as unit](./screenshots/fetchweather_F.png)
 
 **Requirements**
 
