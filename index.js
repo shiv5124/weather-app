@@ -1,11 +1,11 @@
-const apiKey = 'api';
+const apiKey = '98f5bb55869ee5bfe4049963eac127ff';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
-var locationinp = "";
+var locationinput = "";
 var unit = "";
 
 function GetLocation() {
-  locationinp = event.currentTarget.value;
+  locationinput = event.currentTarget.value;
 }
 
 function GetMetric() {
@@ -15,36 +15,38 @@ function GetMetric() {
 function LocationValidation() {
 
   const specials = /[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]/g
-  const empty = /^$/g
 
-  if (locationinp.match(specials) === true || locationinp.match(empty) === true) {
+  if (specials.test(locationinput) === true || locationinput.trim() === '') {
     const disableBtn = document.getElementById('fetch-btn')
     disableBtn.setAttribute('disabled', true)
-    disableBtn.classList.add("disable")
-    const wrongInp = document.getElementById('location')
-    wrongInp.classList.add("disableinp")
+    disableBtn.style.backgroundColor = "red";
+    document.getElementById('location').style.border = "2px solid red"
+  }else{
+    console.log("valid input")
   }
 }
 
-var url = "";
-var ApiData ="";
-
 async function fetchApi() {
   if (location) {
-    url = `${apiUrl}?q=${locationinp}&appid=${apiKey}&units=${unit}`;
+    const url = `${apiUrl}?q=${locationinput}&appid=${apiKey}&units=${unit}`;
     console.log(unit)
     
     try {
       const response = await fetch(url);
-      ApiData = await response.json();
+      const ApiData = await response.json();
+      return  ApiData; 
     } catch (error) {
-      console.error('Error fetching weather data:', error);
+      return {
+        "status" : false,
+        "message" : "some error occured"
+      } 
     }
   }
+  
 }
 
 async function WeatherDetails() {
-  await fetchApi();
+  const ApiData = await fetchApi();
   const locationText = document.getElementById('location-text');
       const temperatureText = document.getElementById('temperature-text');
       const descriptionText = document.getElementById('description-text');
